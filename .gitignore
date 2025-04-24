@@ -1,9 +1,8 @@
 # ROS 2 build artifacts
 meshes/
 models/
-build/
-install/
-log/
+worlds/
+
 
 # Python artifacts
 __pycache__/

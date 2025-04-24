@@ -4,10 +4,10 @@ from ament_index_python.packages import get_package_share_directory
 import launch
 from launch import LaunchDescription
 from launch_ros.substitutions import FindPackageShare
-from launch.substitutions import LaunchConfiguration, FindExecutable, PathJoinSubstitution
+from launch.substitutions import LaunchConfiguration, FindExecutable, PathJoinSubstitution, AndSubstitution, NotSubstitution
 from launch.actions import DeclareLaunchArgument, ExecuteProcess, SetEnvironmentVariable
 from launch_ros.actions import Node
-from launch.conditions import IfCondition, AndSubstitution, NotSubstitution
+from launch.conditions import IfCondition
 
 import xacro
 

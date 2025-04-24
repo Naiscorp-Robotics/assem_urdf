@@ -15,16 +15,20 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(xacro REQUIRED)
 find_package(ament_cmake_python REQUIRED)
 find_package(rclpy REQUIRED)
 
+
 install(
-  DIRECTORY urdf launch rviz config meshes
+  DIRECTORY urdf meshes launch rviz worlds
   DESTINATION share/${PROJECT_NAME}
 )
+
+ament_package()
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
