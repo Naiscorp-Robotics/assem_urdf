@@ -47,7 +47,7 @@ Visualization Manager: # Quản lý các hiển thị visualization
       Value: true
     - Class: rviz_default_plugins/TF # Plugin hiển thị các frame tọa độ và mối quan hệ
       Enabled: true # Bật/tắt hiển thị TF
-      Frame Timeout: 15 # Thời gian tối đa hiển thị frame không cập nhật (giây)
+      Frame Timeout: 20 # Thời gian tối đa hiển thị frame không cập nhật (giây)
       Frames:
         All Enabled: true # Hiển thị tất cả các frame
       Marker Scale: 0.5 # Kích thước của markers (0.5m)
