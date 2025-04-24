@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="assem_urdf" xmlns:xacro="https://www.ros.org/wiki/xacro">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00023393 5.2019E-06 0.045075"
+        rpy="0 0 0" />
+      <mass
+        value="5" />
+      <inertia
+        ixx="0.036016"
+        ixy="7.4282E-07"
+        ixz="2.6297E-05"
+        iyy="0.034799"
+        iyz="-1.3398E-07"
+        izz="0.068467" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="right_behind_wheel">
+    <inertial>
+      <origin
+        xyz="0 0 -1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="3" />
+      <inertia
+        ixx="2.8744E-05"
+        ixy="-2.5643E-21"
+        ixz="-4.7646E-23"
+        iyy="2.8744E-05"
+        iyz="-1.3124E-37"
+        izz="4.7183E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/right_behind_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/right_behind_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_behind_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.11 -0.099999 0.0198"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_behind_wheel" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="left_behind_wheel">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="3" />
+      <inertia
+        ixx="2.8744E-05"
+        ixy="-3.2552E-21"
+        ixz="4.7646E-23"
+        iyy="2.8744E-05"
+        iyz="-1.1911E-23"
+        izz="4.7183E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/left_behind_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/left_behind_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_behind_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.110001193758665 0.100001193758665 0.0198"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_behind_wheel" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="right_front_wheel">
+    <inertial>
+      <origin
+        xyz="0 0 -1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="3" />
+      <inertia
+        ixx="2.8744E-05"
+        ixy="3.2552E-21"
+        ixz="4.7646E-23"
+        iyy="2.8744E-05"
+        iyz="1.1911E-23"
+        izz="4.7183E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/right_front_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/right_front_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_front_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.109998806241335 -0.0999988062413351 0.0198"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_front_wheel" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="left_front_wheel">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="3" />
+      <inertia
+        ixx="2.8744E-05"
+        ixy="2.5643E-21"
+        ixz="-4.7646E-23"
+        iyy="2.8744E-05"
+        iyz="1.3124E-37"
+        izz="4.7183E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/left_front_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/left_front_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_front_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.109998806241335 0.100001193758665 0.0198"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_front_wheel" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="lidar">
+    <inertial>
+      <origin
+        xyz="-0.008293 0.0087407 -0.023287"
+        rpy="0 0 0" />
+      <mass
+        value="0.5" />
+      <inertia
+        ixx="2.064E-05"
+        ixy="2.9105E-06"
+        ixz="2.375E-07"
+        iyy="2.1267E-05"
+        iyz="-2.2238E-07"
+        izz="3.9433E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/lidar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/lidar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidar_joint"
+    type="fixed">
+    <origin
+      xyz="5.8838E-05 8.2784E-05 0.085"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_hand">
+    <inertial>
+      <origin
+        xyz="1.8215E-16 0.021966 2.7756E-17"
+        rpy="0 0 0" />
+      <mass
+        value="1" />
+      <inertia
+        ixx="8.2911E-06"
+        ixy="-1.4532E-22"
+        ixz="7.2421E-24"
+        iyy="9.929E-07"
+        iyz="-9.963E-23"
+        izz="9.2308E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/right_hand.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/right_hand.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_hand_joint"
+    type="revolute">
+    <origin
+      xyz="0.0129399678730561 -0.0745815901101227 0.142000000000008"
+      rpy="-1.570796326795 0 0" />
+    <parent
+      link="lidar" />
+    <child
+      link="right_hand" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_hand">
+    <inertial>
+      <origin
+        xyz="1.8215E-16 0.021966 1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="1" />
+      <inertia
+        ixx="8.2911E-06"
+        ixy="9.1568E-22"
+        ixz="9.3478E-20"
+        iyy="9.929E-07"
+        iyz="1.8485E-22"
+        izz="9.2308E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/left_hand.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/left_hand.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_hand_joint"
+    type="revolute">
+    <origin
+      xyz="0.01294 0.074418 0.142"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="lidar" />
+    <child
+      link="left_hand" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_leg">
+    <inertial>
+      <origin
+        xyz="0.00024165 0.020627 -6.9389E-18"
+        rpy="0 0 0" />
+      <mass
+        value="1" />
+      <inertia
+        ixx="3.0687E-06"
+        ixy="-5.1057E-08"
+        ixz="-1.691E-22"
+        iyy="8.9656E-07"
+        iyz="-2.2762E-22"
+        izz="3.4509E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/right_leg.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/right_leg.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_leg_joint"
+    type="revolute">
+    <origin
+      xyz="0.01294 -0.057082 0.0615"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="lidar" />
+    <child
+      link="right_leg" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_leg">
+    <inertial>
+      <origin
+        xyz="0.00024165 0.020627 -1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="1" />
+      <inertia
+        ixx="3.0687E-06"
+        ixy="-5.1057E-08"
+        ixz="-2.3688E-22"
+        iyy="8.9656E-07"
+        iyz="-4.4075E-22"
+        izz="3.4509E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/left_leg.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/left_leg.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_leg_joint"
+    type="revolute">
+    <origin
+      xyz="0.0129399678730781 0.0569184098898649 0.061499999999994"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="lidar" />
+    <child
+      link="left_leg" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="head_link">
+    <inertial>
+      <origin
+        xyz="0.0016325 5.8302E-08 0.01238"
+        rpy="0 0 0" />
+      <mass
+        value="1" />
+      <inertia
+        ixx="0.00062225"
+        ixy="3.8561E-10"
+        ixz="2.6783E-07"
+        iyy="0.00062611"
+        iyz="2.6356E-11"
+        izz="0.00028839" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/head_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find assem_urdf)/meshes/head_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="head_joint"
+    type="revolute">
+    <origin
+      xyz="0.0016407 -8.1697E-05 0.22206"
+      rpy="0 0 0" />
+    <parent
+      link="lidar" />
+    <child
+      link="head_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>

@@ -1,0 +1,43 @@
+# ROS 2 build artifacts
+meshes/
+models/
+build/
+install/
+log/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# C++ artifacts
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+CMakeFiles/
+CMakeCache.txt
+compile_commands.json
+
+# Temporary files
+.DS_Store
+*~
+*.swp
+*.swo
+*.user
+.vscode/
+.idea/
+
+# Rviz settings backup files
+*.rviz.bak
+*.rviz.autosave 
+
+# Local development files
+GITHUB_INSTRUCTIONS.md 

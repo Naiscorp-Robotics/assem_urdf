@@ -1,0 +1,128 @@
+Panels: # Định nghĩa các bảng điều khiển trong giao diện RViz
+  - Class: rviz_common/Displays # Bảng hiển thị các visualization options
+    Help Height: 78 # Chiều cao của phần help
+    Name: Displays # Tên của bảng
+    Property Tree Widget:
+      Expanded: # Danh sách các mục được mở rộng mặc định
+        - /Global Options1
+        - /Status1
+        - /TF1
+        - /RobotModel1
+      Splitter Ratio: 0.5 # Tỷ lệ chia đôi cửa sổ properties
+    Tree Height: 617 # Chiều cao của tree view
+  - Class: rviz_common/Selection # Bảng quản lý các đối tượng được chọn
+    Name: Selection
+  - Class: rviz_common/Tool Properties # Bảng cấu hình các công cụ tương tác
+    Expanded:
+      - /2D Pose Estimate1 # Công cụ ước tính vị trí 2D
+      - /2D Nav Goal1 # Công cụ đặt mục tiêu điều hướng 2D
+      - /Publish Point1 # Công cụ xuất bản điểm được click
+    Name: Tool Properties
+    Splitter Ratio: 0.5886790156364441
+  - Class: rviz_common/Views # Bảng quản lý góc nhìn camera
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+Visualization Manager: # Quản lý các hiển thị visualization
+  Class: ""
+  Displays:
+    - Alpha: 0.5 # Độ trong suốt của lưới (0-1)
+      Cell Size: 1 # Kích thước của mỗi ô lưới (1m)
+      Class: rviz_default_plugins/Grid # Plugin hiển thị lưới tọa độ
+      Color: 160; 160; 164 # Màu của lưới (RGB)
+      Enabled: true # Bật/tắt hiển thị lưới
+      Line Style:
+        Line Width: 0.029999999329447746 # Độ dày của đường lưới
+        Value: Lines # Kiểu đường (Lines, Billboards)
+      Name: Grid
+      Normal Cell Count: 0
+      Offset: # Vị trí offset của lưới
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY # Mặt phẳng hiển thị lưới (XY, XZ, YZ)
+      Plane Cell Count: 10 # Số lượng ô lưới mỗi chiều
+      Reference Frame: <Fixed Frame> # Frame tham chiếu (sử dụng frame đã chọn trong Global Options)
+      Value: true
+    - Class: rviz_default_plugins/TF # Plugin hiển thị các frame tọa độ và mối quan hệ
+      Enabled: true # Bật/tắt hiển thị TF
+      Frame Timeout: 15 # Thời gian tối đa hiển thị frame không cập nhật (giây)
+      Frames:
+        All Enabled: true # Hiển thị tất cả các frame
+      Marker Scale: 0.5 # Kích thước của markers (0.5m)
+      Name: TF
+      Show Arrows: true # Hiển thị mũi tên giữa các frame
+      Show Axes: true # Hiển thị trục tọa độ của mỗi frame
+      Show Names: true # Hiển thị tên của các frame
+      Tree: {}
+      Update Interval: 0 # Tần số cập nhật (0 = cập nhật liên tục)
+      Value: true
+    - Alpha: 1 # Độ trong suốt của mô hình robot (0-1)
+      Class: rviz_default_plugins/RobotModel # Plugin hiển thị mô hình 3D của robot
+      Description Topic: /robot_description # Topic chứa mô tả URDF của robot
+      Enabled: true # Bật/tắt hiển thị robot
+      Name: RobotModel
+      Robot Description Property: "robot_description" # Tên tham số chứa mô tả robot
+      TF Prefix: "" # Tiền tố cho các TF frames của robot
+      Update Interval: 0 # Tần số cập nhật (0 = cập nhật liên tục)
+      Value: true
+      Visual Enabled: true # Hiển thị phần visual của robot
+  Enabled: true # Bật/tắt tất cả visualization
+  Global Options: # Cấu hình toàn cục
+    Background Color: 48; 48; 48 # Màu nền (RGB - xám đậm)
+    Fixed Frame: base_link # Frame tham chiếu cố định (thường là base_link hoặc world)
+    Frame Rate: 30 # Tần số cập nhật (Hz)
+  Name: root
+  Tools: # Các công cụ tương tác
+    - Class: rviz_default_plugins/Interact # Công cụ tương tác với interactive markers
+      Hide Inactive Objects: true
+    - Class: rviz_default_plugins/MoveCamera # Công cụ di chuyển camera
+    - Class: rviz_default_plugins/Select # Công cụ chọn đối tượng
+    - Class: rviz_default_plugins/FocusCamera # Công cụ điều chỉnh focus của camera
+    - Class: rviz_default_plugins/Measure # Công cụ đo khoảng cách
+    - Class: rviz_default_plugins/PublishPoint # Công cụ xuất bản điểm được click
+      Topic: /clicked_point # Topic để xuất bản điểm
+  Transformation: # Cấu hình transformation
+    Current:
+      Class: rviz_default_plugins/TF
+  Value: true
+  Views: # Cấu hình góc nhìn
+    Current:
+      Class: rviz_default_plugins/Orbit # Chế độ camera quay quanh một điểm
+      Distance: 5 # Khoảng cách từ camera đến focal point (5m)
+      Enable Stereo Rendering: # Cấu hình render stereo (3D)
+        Stereo Eye Separation: 0.05999999865889549 # Khoảng cách giữa 2 mắt trong chế độ stereo
+        Stereo Focal Distance: 1 # Khoảng cách focal trong chế độ stereo
+        Swap Stereo Eyes: false # Đảo ngược mắt trái/phải trong chế độ stereo
+        Value: false # Bật/tắt chế độ render stereo
+      Focal Point: # Điểm trung tâm camera nhìn vào
+        X: 0
+        Y: 0
+        Z: 0
+      Focal Shape Fixed Size: true # Kích thước cố định cho focal shape
+      Focal Shape Size: 0.05000000074505806 # Kích thước của focal shape
+      Invert Z Axis: false # Đảo ngược trục Z
+      Name: Current View
+      Near Clip Distance: 0.009999999776482582 # Khoảng cách gần nhất camera có thể nhìn thấy
+      Pitch: 0.785398 # Góc nghiêng (radians - khoảng 45 độ)
+      Target Frame: <Fixed Frame> # Frame mục tiêu (sử dụng frame đã chọn trong Global Options)
+      Value: Orbit (rviz)
+      Yaw: 0.785398 # Góc quay ngang (radians - khoảng 45 độ)
+    Saved: ~ # Danh sách các góc nhìn đã lưu
+Window Geometry: # Cấu hình cửa sổ
+  Displays:
+    collapsed: false # Trạng thái thu gọn của bảng Displays
+  Height: 846 # Chiều cao cửa sổ
+  Hide Left Dock: false # Ẩn/hiện dock bên trái
+  Hide Right Dock: false # Ẩn/hiện dock bên phải
+  QMainWindow State: 000000ff00000000fd000000040000000000000156000002f4fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d000002f4000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f000002f4fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003d000002f4000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004420000003efc0100000002fb0000000800540069006d00650100000000000004420000000000000000fb0000000800540069006d00650100000000000004500000000000000000000002dc000002f400000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000 # Trạng thái của cửa sổ chính
+  Selection:
+    collapsed: false # Trạng thái thu gọn của bảng Selection
+  Tool Properties:
+    collapsed: false # Trạng thái thu gọn của bảng Tool Properties
+  Views:
+    collapsed: false # Trạng thái thu gọn của bảng Views
+  Width: 1200 # Chiều rộng cửa sổ
+  X: 60 # Vị trí X của cửa sổ trên màn hình
+  Y: 60 # Vị trí Y của cửa sổ trên màn hình
