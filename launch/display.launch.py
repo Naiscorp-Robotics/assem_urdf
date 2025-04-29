@@ -114,7 +114,7 @@ def generate_launch_description():
         ],
     )
     spawn_entity = Node(
-        package="ros_ign_sim",
+        package="ros_gz_sim",
         executable="create",
         output="screen",
         arguments=[
