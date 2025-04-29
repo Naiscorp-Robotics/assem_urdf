@@ -3,22 +3,49 @@
 <package format="3">
   <name>assem_urdf</name>
   <version>1.0.0</version>
-  <description>TODO: Package description</description>
+  <description>URDF description and launch files for Assem robot with ROS2 and Ignition support</description>
   <maintainer email="naiscorp@gmail.com">Naiscorp</maintainer>
   <license>Apache 2.0</license>
-  
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
 
-  <exec_depend>robot_description</exec_depend>
-  <exec_depend>robot_state_publisher</exec_depend>
-  <exec_depend>gazebo_ros</exec_depend>
-  <exec_depend>ros_gz_sim</exec_depend>
+  <!-- Core ROS2 dependencies -->
+  <depend>rclpy</depend>
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>nav_msgs</depend>
+
+  <!-- URDF and robot description -->
+  <depend>xacro</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>joint_state_publisher</depend>
+  <depend>joint_state_publisher_gui</depend>
+
+  <!-- Ignition and simulation -->
+  <depend>ros_gz_bridge</depend>
+  <depend>ros_gz_sim</depend>
+  <depend>ros_gz_interfaces</depend>
+  <depend>ros_ign_gazebo</depend>
+
+  <!-- Control and localization -->
+  <depend>controller_manager</depend>
+  <depend>diff_drive_controller</depend>
+  <depend>robot_localization</depend>
+  <depend>ros2_control</depend>
+  <depend>ros2_controllers</depend>
+
+  <!-- Visualization -->
+  <depend>rviz2</depend>
+  <depend>rviz_common</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
+    <gazebo_ros gazebo_model_path="${prefix}/.."/>
   </export>
 </package>

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="assem_urdf" xmlns:xacro="https://www.ros.org/wiki/xacro">
+  <!-- ============================================= -->
+  <!-- Base Component -->
+  <!-- ============================================= -->
+  <!-- Base link - Main body of the robot -->
   <link
     name="base_link">
     <inertial>
@@ -25,9 +29,9 @@
           filename="file://$(find assem_urdf)/meshes/base_link.STL" />
       </geometry>
       <material
-        name="">
+        name="base_material">
         <color
-          rgba="1 1 1 1" />
+          rgba="0.2 0.2 0.2 1" /> <!-- Dark gray for base -->
       </material>
     </visual>
     <collision>
@@ -40,6 +44,11 @@
       </geometry>
     </collision>
   </link>
+
+  <!-- ============================================= -->
+  <!-- Wheel Components -->
+  <!-- ============================================= -->
+  <!-- Right behind wheel -->
   <link
     name="right_behind_wheel">
     <inertial>
@@ -65,9 +74,9 @@
           filename="file://$(find assem_urdf)/meshes/right_behind_wheel.STL" />
       </geometry>
       <material
-        name="">
+        name="wheel_material">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="0.1 0.1 0.1 1" /> <!-- Black for wheels -->
       </material>
     </visual>
     <collision>
@@ -80,6 +89,7 @@
       </geometry>
     </collision>
   </link>
+  <!-- Joint connecting right behind wheel to base -->
   <joint
     name="right_behind_wheel_joint"
     type="continuous">
@@ -93,6 +103,8 @@
     <axis
       xyz="0 0 1" />
   </joint>
+
+  <!-- Left behind wheel -->
   <link
     name="left_behind_wheel">
     <inertial>
@@ -118,9 +130,9 @@
           filename="file://$(find assem_urdf)/meshes/left_behind_wheel.STL" />
       </geometry>
       <material
-        name="">
+        name="wheel_material">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="0.1 0.1 0.1 1" /> <!-- Black for wheels -->
       </material>
     </visual>
     <collision>
@@ -133,6 +145,7 @@
       </geometry>
     </collision>
   </link>
+  <!-- Joint connecting left behind wheel to base -->
   <joint
     name="left_behind_wheel_joint"
     type="continuous">
@@ -146,6 +159,8 @@
     <axis
       xyz="0 0 1" />
   </joint>
+
+  <!-- Right front wheel -->
   <link
     name="right_front_wheel">
     <inertial>
@@ -171,9 +186,9 @@
           filename="file://$(find assem_urdf)/meshes/right_front_wheel.STL" />
       </geometry>
       <material
-        name="">
+        name="wheel_material">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="0.1 0.1 0.1 1" /> <!-- Black for wheels -->
       </material>
     </visual>
     <collision>
@@ -186,6 +201,7 @@
       </geometry>
     </collision>
   </link>
+  <!-- Joint connecting right front wheel to base -->
   <joint
     name="right_front_wheel_joint"
     type="continuous">
@@ -199,6 +215,8 @@
     <axis
       xyz="0 0 1" />
   </joint>
+
+  <!-- Left front wheel -->
   <link
     name="left_front_wheel">
     <inertial>
@@ -224,9 +242,9 @@
           filename="file://$(find assem_urdf)/meshes/left_front_wheel.STL" />
       </geometry>
       <material
-        name="">
+        name="wheel_material">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="0.1 0.1 0.1 1" /> <!-- Black for wheels -->
       </material>
     </visual>
     <collision>
@@ -239,6 +257,7 @@
       </geometry>
     </collision>
   </link>
+  <!-- Joint connecting left front wheel to base -->
   <joint
     name="left_front_wheel_joint"
     type="continuous">
@@ -252,6 +271,55 @@
     <axis
       xyz="0 0 1" />
   </joint>
+
+  <ros2_control name="IgnitionSystem" type="system">
+    <hardware>
+      <plugin>ign_ros2_control/IgnitionSystem</plugin>
+    </hardware>
+    <joint name="left_front_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-10</param>
+        <param name="max">10</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="right_front_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-10</param>
+        <param name="max">10</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="left_rear_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-10</param>
+        <param name="max">10</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="right_rear_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-10</param>
+        <param name="max">10</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+
+  <gazebo>
+    <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+      <parameters>$(find assem_urdf)/config/diff_drive_controller_velocity.yaml</parameters>
+    </plugin>
+  </gazebo>
+  
+  <!-- ============================================= -->
+  <!-- Sensor Components -->
+  <!-- ============================================= -->
+  <!-- Lidar sensor -->
   <link
     name="lidar">
     <inertial>
@@ -277,9 +345,9 @@
           filename="file://$(find assem_urdf)/meshes/lidar.STL" />
       </geometry>
       <material
-        name="">
+        name="lidar_material">
         <color
-          rgba="0.75294 0.75294 0.75294 1" />
+          rgba="0.8 0.2 0.2 1" /> <!-- Red for lidar -->
       </material>
     </visual>
     <collision>
@@ -292,6 +360,7 @@
       </geometry>
     </collision>
   </link>
+  <!-- Joint connecting lidar to base -->
   <joint
     name="lidar_joint"
     type="fixed">
@@ -310,6 +379,11 @@
       effort="0"
       velocity="0" />
   </joint>
+
+  <!-- ============================================= -->
+  <!-- Manipulator Components -->
+  <!-- ============================================= -->
+  <!-- Right hand -->
   <link
     name="right_hand">
     <inertial>
@@ -335,9 +409,9 @@
           filename="file://$(find assem_urdf)/meshes/right_hand.STL" />
       </geometry>
       <material
-        name="">
+        name="hand_material">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="0.2 0.6 0.8 1" /> <!-- Blue for hands -->
       </material>
     </visual>
     <collision>
@@ -350,6 +424,7 @@
       </geometry>
     </collision>
   </link>
+  <!-- Joint connecting right hand to lidar -->
   <joint
     name="right_hand_joint"
     type="revolute">
@@ -368,6 +443,8 @@
       effort="0"
       velocity="0" />
   </joint>
+
+  <!-- Left hand -->
   <link
     name="left_hand">
     <inertial>
@@ -393,9 +470,9 @@
           filename="file://$(find assem_urdf)/meshes/left_hand.STL" />
       </geometry>
       <material
-        name="">
+        name="hand_material">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="0.2 0.6 0.8 1" /> <!-- Blue for hands -->
       </material>
     </visual>
     <collision>
@@ -408,6 +485,7 @@
       </geometry>
     </collision>
   </link>
+  <!-- Joint connecting left hand to lidar -->
   <joint
     name="left_hand_joint"
     type="revolute">
@@ -426,6 +504,11 @@
       effort="0"
       velocity="0" />
   </joint>
+
+  <!-- ============================================= -->
+  <!-- Leg Components -->
+  <!-- ============================================= -->
+  <!-- Right leg -->
   <link
     name="right_leg">
     <inertial>
@@ -451,9 +534,9 @@
           filename="file://$(find assem_urdf)/meshes/right_leg.STL" />
       </geometry>
       <material
-        name="">
+        name="leg_material">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="0.4 0.4 0.4 1" /> <!-- Medium gray for legs -->
       </material>
     </visual>
     <collision>
@@ -466,6 +549,7 @@
       </geometry>
     </collision>
   </link>
+  <!-- Joint connecting right leg to lidar -->
   <joint
     name="right_leg_joint"
     type="revolute">
@@ -484,6 +568,8 @@
       effort="0"
       velocity="0" />
   </joint>
+
+  <!-- Left leg -->
   <link
     name="left_leg">
     <inertial>
@@ -509,9 +595,9 @@
           filename="file://$(find assem_urdf)/meshes/left_leg.STL" />
       </geometry>
       <material
-        name="">
+        name="leg_material">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="0.4 0.4 0.4 1" /> <!-- Medium gray for legs -->
       </material>
     </visual>
     <collision>
@@ -524,6 +610,7 @@
       </geometry>
     </collision>
   </link>
+  <!-- Joint connecting left leg to lidar -->
   <joint
     name="left_leg_joint"
     type="revolute">
@@ -542,6 +629,11 @@
       effort="0"
       velocity="0" />
   </joint>
+
+  <!-- ============================================= -->
+  <!-- Head Component -->
+  <!-- ============================================= -->
+  <!-- Head -->
   <link
     name="head_link">
     <inertial>
@@ -567,9 +659,9 @@
           filename="file://$(find assem_urdf)/meshes/head_link.STL" />
       </geometry>
       <material
-        name="">
+        name="head_material">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="0.8 0.8 0.2 1" /> <!-- Yellow for head -->
       </material>
     </visual>
     <collision>
@@ -582,6 +674,7 @@
       </geometry>
     </collision>
   </link>
+  <!-- Joint connecting head to lidar -->
   <joint
     name="head_joint"
     type="revolute">
