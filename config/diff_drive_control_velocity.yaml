@@ -10,12 +10,12 @@ controller_manager:
 
 diff_drive_base_controller:
   ros__parameters:
-    left_wheel_names: ["left_front_wheel_joint", "left_behind_wheel_joint"]
-    right_wheel_names: ["right_front_wheel_joint", "right_behind_wheel_joint"]
+    left_wheel_names: ["wheel_left_joint"]
+    right_wheel_names: ["wheel_right_joint"]
 
-    wheel_separation: 0.2 # Distance between left and right wheels (0.1 + 0.1 = 0.2 from URDF joint positions)
-    wheels_per_side: 2 # Two wheels on each side
-    wheel_radius: 0.0198 # Wheel radius from urdf (left_front_wheel_joint origin z value)
+    wheel_separation: 0.199994 # Distance between left and right wheels (from URDF: 0.099997 + 0.099997 = 0.199994)
+    wheels_per_side: 1 # One wheel on each side
+    wheel_radius: 0.034 # Wheel radius from urdf (wheel_joint origin z value)
 
     wheel_separation_multiplier: 1.0
     left_wheel_radius_multiplier: 1.0
@@ -23,7 +23,7 @@ diff_drive_base_controller:
 
     publish_rate: 50.0
     odom_frame_id: odom
-    base_frame_id: base_footprint
+    base_frame_id: base_link
     pose_covariance_diagonal: [0.001, 0.001, 0.0, 0.0, 0.0, 0.01]
     twist_covariance_diagonal: [0.001, 0.0, 0.0, 0.0, 0.0, 0.01]
 
